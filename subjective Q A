@@ -1,0 +1,88 @@
+Question:
+
+Please refer to following class Definition
+ 
+public class Person{
+private String name;
+ 
+public Person(String name){
+this.name = name;
+}
+ 
+public void setName(String name){
+this.name=name;
+}
+
+public String getName(){
+return name;
+}
+}
+
+
+
+
+If you add two objects of this Person class where name property in both the objects contains same value.
+Then how many objects will be there in the HashSet?
+Explain your reason in detail.
+-----------------------------
+ans  - contains 2 objects as it has not overridden hashCode and equals. If equals & haschCode methods are not overridden by the class then they will be inherited from super class, in this case super class is Object hence equals method of object class will be used by HashSet. Object's equals method compares references & not the properties of the object.
+
+
+When does a static block of the class get executed?
+----------------------------------------------------
+Static block gets executed when class gets loaded.
+
+
+What is the lifecycle of a servlet? When does the destroy method of the servlet get called?
+------------------------------------------------------------------------------------------
+-init(ServletConfig config)
+ init()
+
+ service (Generic)
+ service (http)
+
+ destroy
+
+ destroy method is called in following cases
+ - server shut down.
+ - stopping the application using administartion options of the container.
+ - removing the application from the container.
+
+
+
+
+What is a default constructor? Who provides it? When?
+-----------------------------------------------------
+If you don't provide any constructor, Java compiler provides default constructor i.e. constructor with no arguments.
+
+
+
+What is inversion of control? Explain with suitable example.
+------------------------------------------------------------
+
+In the traditional programming style, developers write code to instantiate dependent objects. 
+Giving the control of object instantiation from developer to the IOC container is "Inversion of Control"
+
+Following example illustrates it -
+
+public class TextEditor {
+
+    private SpellChecker checker;
+
+    public TextEditor(SpellChecker checker) {
+        this.checker= checker;
+    }
+}
+
+In this example TextEditor dependes on SpellChecker. If you want to instantiate TextEditor, 
+you must first create instance of SpellChecker. Without IOC one would do this as follows
+
+SpellChecker checker = new SpellChecker();
+TextEditor textEditor = new TextEditor(checker);
+
+If you use IOC container like Spring then Spring will instantiate the objects for you.
+Spring provides factory methods to get access to the managed objects.
+
+TextEditor textEditor = (TextEditor)factory.getBean("textEditor");
+
+This brings flexibility. If you have to modify the dependency then it can be done independently without modifying the source code.
