@@ -14,11 +14,7 @@ public class StudentSchedular {
 	
 	public void showAllStudents()
 	{
-		for(int i=0;i<counterStudent;i++)
-		{
-			System.out.println(students[i].getRollNumber());
-			System.out.println(students[i].getName());
-		}
+		
 	}
 
 }
