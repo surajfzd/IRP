@@ -1,5 +1,5 @@
 import java.util.Scanner;
-
+/*suraj*/
 public class Admin {
 
 	private static Scanner sc=new Scanner(System.in);
